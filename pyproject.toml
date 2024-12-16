@@ -1,0 +1,31 @@
+[project]
+name = "fastapi-reference"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Brian Aiken", email = "bpaiken570@gmail.com"},
+]
+dependencies = [
+    "serpent-web>=0.2.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.30.5",
+    "alembic>=1.14.0",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+start = "uvicorn src.fastapi_reference.main:app --reload --port 8000 --access-log --log-level debug"
+migration = "alembic revision --autogenerate -m"
+migrate = "alembic upgrade head"
+drop_tables = "py scripts/drop_tables.py"
+
+[[tool.pdm.source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true

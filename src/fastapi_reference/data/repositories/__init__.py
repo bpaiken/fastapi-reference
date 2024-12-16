@@ -1,0 +1,2 @@
+from src.fastapi_reference.data.repositories.todo_repository import TodoRepository
+from src.fastapi_reference.data.repositories.person_repository import PersonRepository
