@@ -31,7 +31,7 @@ app.add_middleware(
 
 def start():
     uvicorn.run(
-        "src.resume_ai.main:app",
+        "src.fastapi_reference.main:app",
         host="0.0.0.0",
         port=8000,
         reload=True,
