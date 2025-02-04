@@ -1,0 +1,14 @@
+Package Manager: PDM   (https://pdm-project.org/en/latest/)
+
+API Framework: FastAPI
+  (ASGI Asynchronous Server Gateway Interface: Starlette)
+
+Data Serialization & Validation: Pydantic
+
+Configuration: Pydantic Settings
+
+SQL ORM: SQLAlchemy
+
+Database Migrations: Alembic (Sister project of SQLAlchemy)
+
+Web Server: Uvicorn

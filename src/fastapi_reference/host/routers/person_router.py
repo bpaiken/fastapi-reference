@@ -12,46 +12,45 @@ person_router = APIRouter(
 
 
 @person_router.get("")
-def get_people(
+async def get_people(
         skip: int = 0,
         limit: int = 100,
         search_text: str = None,
-        handler: PersonHandler = Depends(get_person_handler),
+        handler: PersonHandler = Depends(get_person_handler)
 ) -> PaginatedGetPersonResponse:
-    return handler.get_paginated(
+    return await handler.get_paginated_async(
         skip=skip,
         limit=limit,
         search_text=search_text,
     )
 
-
 @person_router.get("/{person_id}")
-def get_person(
+async def get_person(
         person_id: str,
         handler: PersonHandler = Depends(get_person_handler),
 ) -> GetPersonResponse:
-    return handler.get_by_id(id=person_id)
+    return await handler.get_by_id_async(id=person_id)
 
 @person_router.post("")
-def create_person(
+async def create_person(
         schema: CreatePersonRequest,
         handler: PersonHandler = Depends(get_person_handler),
 ) -> GetPersonResponse:
-    return handler.create(schema=schema)
+    return await handler.create_async(schema=schema, defer_commit=True)
 
 @person_router.put("/{person_id}")
-def update_todo(
+async def update_todo(
         person_id: str,
         schema: CreatePersonRequest,
         handler: PersonHandler = Depends(get_person_handler),
 )-> GetPersonResponse:
-    return handler.update(id=person_id, schema=schema)
+    return await handler.update_async(id=person_id, schema=schema)
 
 
 @person_router.delete("/{person_id}")
-def delete_todo(
+async def delete_todo(
         person_id: str,
         handler: PersonHandler = Depends(get_person_handler),
 ) -> Response:
-    handler.delete(id=person_id)
+    await handler.delete_async(id=person_id)
     return Response(status_code=204)

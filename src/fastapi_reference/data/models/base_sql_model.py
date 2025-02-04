@@ -1,12 +1,12 @@
 import uuid
 
-from serpent_web.data.sql.base_sql_model import BaseSqlModel as SerpentBaseSqlModel
+from serpent_web.data.sql.base_sql_model import BaseSqlModelAsync
 from sqlalchemy import String
 from sqlalchemy.orm import validates, class_mapper
 
-
+# BaseSqlModel async enables async operations on lazily loaded relationships
 # [str] designates the primary key type as string (in this case we use UUIDs but save them as strings)
-class BaseSqlModel(SerpentBaseSqlModel[str]):
+class BaseSqlModel(BaseSqlModelAsync[str]):
     __abstract__ = True  # abstract base class
 
     @classmethod

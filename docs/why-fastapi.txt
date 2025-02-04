@@ -1,0 +1,34 @@
+FastAPI Strengths
+
+Performance
+- Built on Starlette for ASGI (Asynchronous Server Gateway Interface) and Pydantic for data serialization & validation.
+- Natively supports async and await for efficient I/O bound operations.
+
+Automatic API Documentation
+- Automatically generated Swagger UI and ReDoc documentation.
+
+Built-in Data Validation
+- Leverages pydantic, reads type hints, and validates request data.
+
+Asynchronous & Concurrent Support
+- ASGI Compatibility: Being ASGI-based, it supports WebSockets, background tasks, and long-running requests natively.
+- Concurrency: Works well with modern Python libraries like httpx or asyncpg for making asynchronous I/O operations.
+
+
+
+Compared to Flask
+- Asynchronous Programming: FastAPI supports async/await natively, while Flask requires extensions like Flask-SocketIO for async features.
+- Data Validation: FastAPI provides built-in validation and type checking via Pydantic, while Flask relies on third-party libraries.
+- : FastAPI automatically generates interactive API docs, while Flask needs additional libraries like flasgger.
+
+Compared to Django REST Framework (DRF)
+- Simplicity: FastAPI is more lightweight and simpler to use compared to Django REST Framework, which can be overly complex for small to medium projects.
+- Performance: FastAPI is faster due to its async capabilities and less overhead.
+- Type Safety: While DRF does not natively support type hints, FastAPI leverages Python’s type hints extensively.
+
+Compared to Tornado
+- Ease of Use: Tornado is powerful but low-level. FastAPI provides similar async capabilities with a more developer-friendly syntax.
+- Documentation & Validation: FastAPI offers automatic API docs and validation, which Tornado lacks.
+
+Compared to Falcon
+- Ease of Development: Falcon is minimalist and focused on speed, but it lacks features like validation, serialization, and automatic documentation, which FastAPI provides out of the box.

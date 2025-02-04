@@ -9,7 +9,7 @@ load_dotenv()
 class DatabaseSettings(BaseSettings):
     database_name: str
     database_url: str
-    database_type: Optional[DatabaseType] = DatabaseType.POSTGRES
+    database_type: Optional[DatabaseType]
 
 
 class _AppSettings(BaseSettings):

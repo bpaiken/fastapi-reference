@@ -17,11 +17,13 @@ class UpdatePersonRequest(BasePersonSchema):
 
 
 class GetPersonResponse(BaseSqlModelSchema, BasePersonSchema):
+    id: str
     todos: list[GetTodoResponse]
 
+    # pass
 
 class GetManyPersonResponse(BasePersonSchema):
-    pass
+    id: str
 
 
 class PaginatedGetPersonResponse(PaginatedList[GetManyPersonResponse]):
