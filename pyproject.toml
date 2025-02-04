@@ -6,10 +6,11 @@ authors = [
     {name = "Brian Aiken", email = "bpaiken570@gmail.com"},
 ]
 dependencies = [
-    "serpent-web>=0.2.0",
+    "serpent-web>=0.3.2",
     "fastapi>=0.110.0",
     "uvicorn>=0.30.5",
     "alembic>=1.14.0",
+    "aiosqlite>=0.21.0",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"

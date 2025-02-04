@@ -12,13 +12,13 @@ todo_router = APIRouter(
 
 
 @todo_router.get("")
-def get_todos(
+async def get_todos(
         skip: int = 0,
         limit: int = 100,
         search_text: str = None,
         handler: TodoHandler = Depends(get_todo_handler),
 ) -> PaginatedGetTodoResponse:
-    return handler.get_paginated(
+    return await handler.get_paginated_async(
         skip=skip,
         limit=limit,
         search_text=search_text,
@@ -26,34 +26,34 @@ def get_todos(
 
 
 @todo_router.get("/{todo_id}")
-def get_todo(
+async def get_todo(
         todo_id: str,
         handler: TodoHandler = Depends(get_todo_handler),
 ) -> GetTodoResponse:
-    return handler.get_by_id(id=todo_id)
+    return await handler.get_by_id_async(id=todo_id)
 
 
 @todo_router.post("")
-def create_todo(
+async def create_todo(
         schema: CreateTodoRequest,
         handler: TodoHandler = Depends(get_todo_handler),
 ) -> GetTodoResponse:
-    return handler.create(schema=schema)
+    return await handler.create_async(schema=schema)
 
 
 @todo_router.put("/{todo_id}")
-def update_todo(
+async def update_todo(
         todo_id: str,
         schema: CreateTodoRequest,
         handler: TodoHandler = Depends(get_todo_handler),
 ) -> GetTodoResponse:
-    return handler.update(id=todo_id, schema=schema)
+    return await handler.update_async(id=todo_id, schema=schema)
 
 
 @todo_router.delete("/{todo_id}")
-def delete_todo(
+async def delete_todo(
         todo_id: str,
         handler: TodoHandler = Depends(get_todo_handler),
 ) -> Response:
-    handler.delete(id=todo_id)
+    await handler.delete_async(id=todo_id)
     return Response(status_code=204)
